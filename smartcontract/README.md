@@ -40,3 +40,33 @@ FEES=0
 SET_URI_IF_EMPTY=true
 DOC_HASH=0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 DOC_CID=ipfs://thisisfakeipfs
+
+## Run
+---
+1. Install deps:
+   npm install ethers dotenv
+
+2. Jalankan:
+   node scripts/test-amoy.js
+
+## Sample Output
+-------------
+paused(): false
+NOTARY_ROLE ok?: true
+MANAGER_ROLE ok?: true
+uri(1): ipfs://placeholder/{id}.json
+1) setKyc(recipient) → SKIP (sudah true)
+2) requestMint → MintRequested (reqId=4)
+3) approveByNotary → mined: 0x5a22cf2a...
+4) approveByManager → mined: 0x39100350...
+5) executeMint → mined: 0x4350d91d...
+6) balanceOf(RECIPIENT, 1) = 10
+
+✅ Flow selesai tanpa revert, balance sesuai AMOUNT.
+
+Tx Hashes
+---------
+requestMint      0x26f3e60b21fe14...
+approveByNotary  0x5a22cf2acd9d3...
+approveByManager 0x391003501aec2...
+executeMint      0x4350d91d1571f...

@@ -1,6 +1,7 @@
 // scripts/test-amoy.js
 import 'dotenv/config';
 import { ethers } from 'ethers';
+import fs from "fs";
 
 const {
     RPC_URL,
@@ -284,6 +285,23 @@ async function main() {
     } catch (e) {
         console.error("❌ balanceOf failed:", fmtErr(e));
     }
+
+    const row = [
+        new Date().toISOString(),
+        CONTRACT_ADDRESS,
+        "1",                    // tokenId
+        "4",                    // requestId (dari log kamu)
+        RECIPIENT,             // recipient
+        "10",                  // amount
+        "OK"                   // outcome
+    ].join(",");
+
+    fs.appendFileSync("amoy_issuance_runs.csv",
+        "timestamp,contract,tokenId,requestId,recipient,amount,outcome\n",
+        { flag: "wx" } // write header only if file not exists
+    );
+    fs.appendFileSync("amoy_issuance_runs.csv", row + "\n");
+    console.log("📝 Saved: amoy_issuance_runs.csv");
 }
 
 main().catch((e) => {

@@ -1,0 +1,2 @@
+timestamp,contract,tokenId,requestId,recipient,amount,outcome
+2025-10-01T04:16:55.294Z,0x7c80E676758cc6f1748ddF0c02dB0abE8Ec42631,1,4,0xb933CCAe8Cef00d60b30A0652ad497FF78437542,10,OK

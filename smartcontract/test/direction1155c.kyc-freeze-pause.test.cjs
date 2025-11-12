@@ -1,12 +1,14 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
+const CONTRACT_FQN = "contracts/Direction1155C.sol:Direction1155C";
+
 describe("Direction1155C - KYC, Freeze & Pause", function () {
   let c, admin, notary, manager, owner, bob;
 
   beforeEach(async () => {
     [admin, notary, manager, owner, bob] = await ethers.getSigners();
-    const F = await ethers.getContractFactory("Direction1155C");
+    const F = await ethers.getContractFactory(CONTRACT_FQN);
     c = await F.deploy("ipfs://CID_BASE/{id}.json");
     await c.waitForDeployment();
 

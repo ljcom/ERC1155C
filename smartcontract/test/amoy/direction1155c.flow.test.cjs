@@ -475,6 +475,11 @@ describe("Direction1155C (backend/tests)", { concurrency: false }, () => {
       log("info", "Mint flow completed", { requestId: reqId.toString(), tokenId: id, amount });
     } else {
       log("warn", "Skipping requestMint/approve/executeMint (existing supply detected)");
+      const ownerBalanceExisting = await contract.balanceOf(owner.address, id);
+      assert.ok(
+        ownerBalanceExisting >= 10n,
+        "Owner does not hold enough minted tokens; set FORCE_MINT=true to rerun mint."
+      );
     }
 
     await expectRevert(
@@ -482,6 +487,7 @@ describe("Direction1155C (backend/tests)", { concurrency: false }, () => {
       "KYC to"
     );
 
+    const receiverBalanceBefore = await contract.balanceOf(receiver.address, id);
     await sendTxWithRetry("setKyc-investor", (overrides) =>
       contract.setKyc(receiver.address, true, overrides)
     );
@@ -490,7 +496,12 @@ describe("Direction1155C (backend/tests)", { concurrency: false }, () => {
         .connect(owner)
         .safeTransferFrom(owner.address, receiver.address, id, 10, "0x", overrides)
     );
-    assert.equal(await contract.balanceOf(receiver.address, id), 10n);
+    const receiverBalanceAfter = await contract.balanceOf(receiver.address, id);
+    assert.equal(
+      receiverBalanceAfter - receiverBalanceBefore,
+      10n,
+      "Receiver should gain exactly 10 tokens"
+    );
   });
 
   it("reverts executeMint when approvals are missing", async () => {
@@ -574,19 +585,32 @@ describe("Direction1155C (backend/tests)", { concurrency: false }, () => {
     const amountForSale = 4;
     const fees = { notaryFee: 0, managerFee: 0, tax: 0 };
 
-    const marketReqBefore = await contract.mintRequestId();
-    await sendTxWithRetry("requestMint-market", (overrides) =>
-      contract.requestMint(owner.address, propertyId, totalMintAmount, fees, "", ethers.ZeroHash, "", overrides)
+    const ownerBalancePreListing = await contract.balanceOf(owner.address, propertyId);
+    const needFreshMint = FORCE_MINT || ownerBalancePreListing < BigInt(amountForSale);
+    if (needFreshMint) {
+      await sendTxWithRetry("requestMint-market", (overrides) =>
+        contract.requestMint(owner.address, propertyId, totalMintAmount, fees, "", ethers.ZeroHash, "", overrides)
+      );
+      const reqId = (await contract.mintRequestId()) - 1n;
+      await sendTxWithRetry("approveByNotary", (overrides) =>
+        contract.connect(notary).approveByNotary(reqId, overrides)
+      );
+      await sendTxWithRetry("approveByManager", (overrides) =>
+        contract.connect(manager).approveByManager(reqId, overrides)
+      );
+      await sendTxWithRetry("executeMint", (overrides) => contract.executeMint(reqId, overrides));
+      log("info", "Property minted for marketplace test", { tokenId: propertyId, amount: totalMintAmount });
+    } else {
+      log("warn", "Skipping marketplace mint (owner already holds sufficient tokens)", {
+        ownerBalance: ownerBalancePreListing.toString(),
+      });
+    }
+
+    const ownerBalanceForListing = await contract.balanceOf(owner.address, propertyId);
+    assert.ok(
+      ownerBalanceForListing >= BigInt(amountForSale),
+      "Owner balance too low for listing; set FORCE_MINT=true"
     );
-    const reqId = (await contract.mintRequestId()) - 1n;
-    await sendTxWithRetry("approveByNotary", (overrides) =>
-      contract.connect(notary).approveByNotary(reqId, overrides)
-    );
-    await sendTxWithRetry("approveByManager", (overrides) =>
-      contract.connect(manager).approveByManager(reqId, overrides)
-    );
-    await sendTxWithRetry("executeMint", (overrides) => contract.executeMint(reqId, overrides));
-    log("info", "Property minted for marketplace test", { tokenId: propertyId, amount: totalMintAmount });
 
     await sendTxWithRetry("setKyc-investor", (overrides) =>
       contract.setKyc(receiver.address, true, overrides)

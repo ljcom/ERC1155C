@@ -1,0 +1,40 @@
+TAP version 13
+# [dotenv@17.2.3] injecting env (35) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+# [2025-11-13T12:04:48.908Z] INFO Loaded environment file {"envPath":"/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/.env"}
+# [2025-11-13T12:04:48.933Z] INFO Admin wallet configured {"address":"0x03a44e3a296B65Cc0Ff94B17E872f8CFb93ef5E4"}
+# [2025-11-13T12:04:48.937Z] INFO Starting fresh fixture deployment
+# [2025-11-13T12:04:48.955Z] WARN Skipping automatic MATIC funding for role wallets {"envVar":"TEST_ROLE_MATIC_FUND","value":"0"}
+# [2025-11-13T12:04:48.959Z] INFO Reusing existing Direction1155C deployment {"address":"0x4365f4dFEEB727a2C488470A804483463d504229"}
+# [2025-11-13T12:04:48.959Z] INFO Reusing existing payment token {"address":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C","faucet":false}
+# [2025-11-13T12:04:48.959Z] WARN Skipping payment token airdrop because ALLOW_FAUCET=false
+# [2025-11-13T12:04:49.504Z] INFO Payment token already configured {"paymentToken":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C"}
+# [2025-11-13T12:04:50.731Z] INFO Role already assigned {"role":"0x014df5ee2861d7f34562399ffa112fc59b51f810d2b875c3609ba0c31ac873d0","account":"0xFF303BC357fAb9E73C840eD0bD3107c89d6D1B5f","label":"notary"}
+# [2025-11-13T12:04:50.731Z] INFO Role already assigned {"role":"0x241ecf16d79d0f8dbfb92cbc07fe17840425976cf0667f022fe9877caa831b08","account":"0x766FF70BF672DA28380cFe7AFaF2168Fb8f7c544","label":"manager"}
+# [2025-11-13T12:04:51.226Z] INFO Address already KYC'd {"address":"0x03a44e3a296B65Cc0Ff94B17E872f8CFb93ef5E4","label":"admin"}
+# [2025-11-13T12:04:51.226Z] INFO Address already KYC'd {"address":"0xb933CCAe8Cef00d60b30A0652ad497FF78437542","label":"owner"}
+# [2025-11-13T12:04:54.203Z] INFO Starting fresh fixture deployment
+# [2025-11-13T12:04:54.223Z] WARN Skipping automatic MATIC funding for role wallets {"envVar":"TEST_ROLE_MATIC_FUND","value":"0"}
+# [2025-11-13T12:04:54.226Z] INFO Reusing existing Direction1155C deployment {"address":"0x4365f4dFEEB727a2C488470A804483463d504229"}
+# [2025-11-13T12:04:54.226Z] INFO Reusing existing payment token {"address":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C","faucet":false}
+# [2025-11-13T12:04:54.226Z] WARN Skipping payment token airdrop because ALLOW_FAUCET=false
+# Subtest: Direction1155C (backend/tests)
+    # Subtest: mints after dual approvals and enforces off-chain KYC rules
+    not ok 1 - mints after dual approvals and enforces off-chain KYC rules
+      ---
+      duration_ms: 5265.598333
+      location: '/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/test/amoy/direction1155c.flow.test.cjs:353:3'
+      failureType: 'hookFailed'
+      error: 'replacement fee too low (transaction="0x02f8b483013882458509502f90008509502f907e82bd7a944365f4dfeeb727a2c488470a804483463d50422980b8447807aeba000000000000000000000000766ff70bf672da28380cfe7afaf2168fb8f7c5440000000000000000000000000000000000000000000000000000000000000001c080a012b6c2e38a81db88de3c150f0aeb5abae298840a1e37a09da431e73953405afba067cf838cf6dfe109641a45c9365cbd04771a08ae4ffe7f7c68d4cad9665ad84e", info={ "error": { "code": -32000, "message": "replacement transaction underpriced" } }, code=REPLACEMENT_UNDERPRICED, version=6.15.0)'
+      code: 'REPLACEMENT_UNDERPRICED'
+      stack: |-
+        makeError (/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/node_modules/ethers/lib.commonjs/utils/errors.js:137:21)
+        JsonRpcProvider.getRpcError (/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/node_modules/ethers/lib.commonjs/providers/provider-jsonrpc.js:730:49)
+        /Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/node_modules/ethers/lib.commonjs/providers/provider-jsonrpc.js:302:45
+        process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      ...
+# [2025-11-13T12:04:54.700Z] INFO Payment token already configured {"paymentToken":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C"}
+# [2025-11-13T12:04:55.838Z] INFO Role already assigned {"role":"0x014df5ee2861d7f34562399ffa112fc59b51f810d2b875c3609ba0c31ac873d0","account":"0xFF303BC357fAb9E73C840eD0bD3107c89d6D1B5f","label":"notary"}
+# [2025-11-13T12:04:55.838Z] INFO Role already assigned {"role":"0x241ecf16d79d0f8dbfb92cbc07fe17840425976cf0667f022fe9877caa831b08","account":"0x766FF70BF672DA28380cFe7AFaF2168Fb8f7c544","label":"manager"}
+# [2025-11-13T12:04:56.233Z] INFO Address already KYC'd {"address":"0x03a44e3a296B65Cc0Ff94B17E872f8CFb93ef5E4","label":"admin"}
+# [2025-11-13T12:04:56.234Z] INFO Address already KYC'd {"address":"0xb933CCAe8Cef00d60b30A0652ad497FF78437542","label":"owner"}
+# [2025-11-13T12:04:56.234Z] INFO Address already KYC'd {"address":"0xFF303BC357fAb9E73C840eD0bD3107c89d6D1B5f","label":"notary"}

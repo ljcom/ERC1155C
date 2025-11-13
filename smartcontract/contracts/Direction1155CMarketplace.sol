@@ -106,6 +106,7 @@ abstract contract Direction1155CMarketplace is Direction1155CMinting {
         require(kyc[msg.sender], "KYC required");
         IERC20 token = paymentToken;
         require(address(token) != address(0), "payment token not set");
+        require(!frozenId[tokenId], "id frozen");
 
         address[] storage holders = _holders[tokenId];
         require(holders.length > 0, "no holders");

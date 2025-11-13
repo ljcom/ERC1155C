@@ -72,7 +72,7 @@ npx hardhat test
 ```
   Lock
     Deployment
-      ✔ Should set the right unlockTime (466ms)
+      ✔ Should set the right unlockTime (498ms)
       ✔ Should set the right owner
       ✔ Should receive and store the funds to lock
       ✔ Should fail if the unlockTime is not in the future
@@ -88,23 +88,38 @@ npx hardhat test
 
   Direction1155C - End to End Flow
     ✔ mints after 2-of-2 approvals, sets URI & doc, then enforces KYC on transfers
+    ✔ reverts executeMint if no approvals have been granted
+    ✔ reverts executeMint when only notary approval is present
+    ✔ reverts executeMint when only manager approval is present
+    ✔ restricts document and URI setters to their respective roles
 
   Direction1155C - KYC, Freeze & Pause
     ✔ blocks transfer to non-KYC and allows after KYC
     ✔ freezes ID and prevents transfers
     ✔ pauses all transfers globally
     ✔ supports batch transfer checks (KYC & freeze per ID)
+    ✔ prevents minting tokens to frozen accounts
+    ✔ blocks frozen accounts from transferring tokens
 
   Direction1155C - Marketplace & Interest
     ✔ allows KYC seller to list tokens and buyer to purchase with ERC20 payments
     ✔ distributes interest proportionally to holders using holder enumeration
+    ✔ reverts listing creation for non-KYC sellers
+    ✔ reverts listing creation for frozen sellers
+    ✔ reverts marketplace purchases from non-KYC buyers
+    ✔ reverts purchases that exceed the listed amount
+    ✔ reverts purchases when buyer ERC20 balance is insufficient
+    ✔ requires payment token to be configured before listing creation
+    ✔ rejects setting the payment token to the zero address
+    ✔ requires interest distributors to be KYC verified
+    ✔ reverts interest distribution when the token ID is frozen
 
   Direction1155C - Role Listing
     ✔ addresses have their respective roles
     ✔ denies roles to outsiders
     ✔ lists NOTARY and MANAGER role members
 
-  19 passing (783ms)
+  34 passing (1s)
 ```
 
 ---
@@ -148,6 +163,20 @@ npx hardhat test
   3. Buyer approves ERC20 allowance and calls `buyListing`.
   4. Treasury/issuer calls `distributeInterest` with total coupon amount.
   5. Use `getHolders(id)` to audit enumerated owners before payouts.
+
+### Node.js Amoy regression test (ethers only)
+Run a lightweight Node.js test (no Hardhat test runner) directly against Polygon Amoy:
+1. `cp smartcontract/test/.env.example smartcontract/.env` (or `smartcontract/test/.env`) and fill in `RPC_URL`, `CHAIN_ID`, `CHAIN_NAME`, plus a funded admin signer (`TEST_SIGNER_PRIVATE_KEY` + `TEST_SIGNER_ADDRESS`). The runner automatically looks for `smartcontract/.env` first, then `smartcontract/test/.env`, so you can keep secrets in the main config. Set `TEST_ROLE_MATIC_FUND` to a non-zero ether amount only if you want the script to auto-fund role wallets with MATIC; otherwise leave it at 0 and top them up manually.
+   - Optional but recommended: set `TEST_NOTARY_*`, `TEST_MANAGER_*`, `TEST_OWNER_*`, `TEST_INVESTOR_*` so the on-chain actions use your real role wallets; otherwise the test spins up random wallets and funds them automatically.
+   - Advanced: set `DIRECTION1155C_TEST_ENV=/absolute/path/to/.env` if you want to load a custom env file elsewhere.
+   - Already deployed contracts? set `TEST_EXISTING_CONTRACT_ADDRESS` (or `DIRE1155C_ADDRESS`) plus `TEST_PAYMENT_TOKEN_ADDRESS`/`MOCK_USDT_ADDRESS` so the runner attaches to those deployments instead of redeploying every test. The script still mints new tokens and may update roles/KYC, so point it to a staging deployment.
+   - Set `ALLOW_FAUCET=false` only when your payment token already exists and holders are funded; the runner will skip minting/airdrops (and the faucet test) and will require `TEST_PAYMENT_TOKEN_ADDRESS` to be set.
+2. Ensure artifacts exist (`cd smartcontract && npx hardhat compile`).
+3. Execute `cd smartcontract && node --test test/amoy/direction1155c.flow.test.cjs`.
+
+By default the script deploys a fresh Direction1155C contract to Amoy, grants roles, and funds temporary wallets, so the configured signer must hold enough MATIC to cover multiple transactions per run. If you supplied `TEST_EXISTING_CONTRACT_ADDRESS`, it attaches to that deployment instead—only the per-test mint/listing/interest flows consume gas.
+
+- The CLI test now auto-deploys `MockERC20` (mUSDT), airdrops `TEST_MOCK_USDT_AIRDROP` (default 1,000 tokens) to every wallet, lists tokens at `TEST_LISTING_PRICE` (default 0.01) and distributes interest equal to `TEST_INTEREST_AMOUNT` (default 0.001) so you can observe proportional payouts. Adjust `TEST_PAYMENT_TOKEN_DECIMALS`/`PAYMENT_TOKEN_ARTIFACT_PATH` in the env file if you want to plug in a different asset.
 
 ---
 

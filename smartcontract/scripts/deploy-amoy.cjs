@@ -6,7 +6,9 @@ async function main() {
   const [deployer] = await ethers.getSigners();
   console.log("Deployer:", deployer.address);
 
-  const F = await ethers.getContractFactory("Direction1155C");
+  const F = await ethers.getContractFactory(
+    "contracts/Direction1155C.sol:Direction1155C"
+  );
 
   // base URI untuk metadata (bisa dari .env)
   const baseURI = process.env.BASE_URI || "ipfs://placeholder/{id}.json";

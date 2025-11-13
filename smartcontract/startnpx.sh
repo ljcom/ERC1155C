@@ -3,13 +3,17 @@ npx hardhat clean
 npx hardhat compile
 npx hardhat node
 
-#DEPLOY
+#DEPLOY-HARDHAT-LOCAL
 npx hardhat compile
 npx hardhat run --network localhost scripts/deploy-local.js
 
 #DEPLOY-AMOY
 npx hardhat compile
-npx hardhat run --network amoy scripts/deploy-amoy.js
+npx hardhat run --network amoy scripts/deploy-amoy.cjs
+#mock usdt
+npx hardhat run scripts/deploy-mock-usdt.cjs --network amoy
+#test
+npx hardhat run scripts/test-amoy.cjs --network amoy
 
 #terminal flow
 npx hardhat run --network localhost scripts/flow-e2e.js

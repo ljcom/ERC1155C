@@ -68,6 +68,45 @@ npx hardhat test
 - Hardhat auto-compiles before running the 19 Mocha tests (mint flow, KYC/pause controls, marketplace, interest distribution, role checks, plus the default `Lock` sample).
 - You’ll see a Node-21 warning if you haven’t switched to LTS—safe to ignore for local runs; switch to Node 20 to silence it.
 
+### Latest Run (Hardhat)
+```
+  Lock
+    Deployment
+      ✔ Should set the right unlockTime (466ms)
+      ✔ Should set the right owner
+      ✔ Should receive and store the funds to lock
+      ✔ Should fail if the unlockTime is not in the future
+    Withdrawals
+      Validations
+        ✔ Should revert with the right error if called too soon
+        ✔ Should revert with the right error if called from another account
+        ✔ Shouldn't fail if the unlockTime has arrived and the owner calls it
+      Events
+        ✔ Should emit an event on withdrawals
+      Transfers
+        ✔ Should transfer the funds to the owner
+
+  Direction1155C - End to End Flow
+    ✔ mints after 2-of-2 approvals, sets URI & doc, then enforces KYC on transfers
+
+  Direction1155C - KYC, Freeze & Pause
+    ✔ blocks transfer to non-KYC and allows after KYC
+    ✔ freezes ID and prevents transfers
+    ✔ pauses all transfers globally
+    ✔ supports batch transfer checks (KYC & freeze per ID)
+
+  Direction1155C - Marketplace & Interest
+    ✔ allows KYC seller to list tokens and buyer to purchase with ERC20 payments
+    ✔ distributes interest proportionally to holders using holder enumeration
+
+  Direction1155C - Role Listing
+    ✔ addresses have their respective roles
+    ✔ denies roles to outsiders
+    ✔ lists NOTARY and MANAGER role members
+
+  19 passing (783ms)
+```
+
 ---
 
 ## Deployment to Polygon Amoy

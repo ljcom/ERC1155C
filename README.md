@@ -1,6 +1,6 @@
-# ERC1155C Issuance Flow Test (Polygon Amoy)
+# Direction1155C Issuance Flow Test (Polygon Amoy)
 
-This repository contains scripts and notes for testing an **ERC1155C dual-approval issuance flow** (SPV → Notary → Manager → Mint) on the **Polygon Amoy testnet**.
+This repository contains scripts and notes for testing an **Direction1155C dual-approval issuance flow** (SPV → Notary → Manager → Mint) on the **Polygon Amoy testnet**.
 
 ---
 

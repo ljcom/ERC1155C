@@ -13,6 +13,7 @@ async function deployPaymentTokenAndAirdrop({
   adminWallet,
   recipients = [],
   airdropAmount = 0n,
+  sendTxWithRetry,
 }) {
   if (!adminWallet || !adminWallet.provider) {
     throw new Error("adminWallet with provider is required");
@@ -32,11 +33,16 @@ async function deployPaymentTokenAndAirdrop({
   await paymentToken.waitForDeployment();
 
   if (airdropAmount > 0n && recipients.length > 0) {
-    await Promise.all(
-      recipients.map((recipient) =>
-        paymentToken.mint(recipient.address, airdropAmount).then((tx) => tx.wait())
-      )
-    );
+    const mintAction = (recipient) => {
+      if (typeof sendTxWithRetry === "function") {
+        return sendTxWithRetry(`paymentToken-mint-${recipient.address}`, (overrides) =>
+          paymentToken.mint(recipient.address, airdropAmount, overrides)
+        );
+      }
+      return paymentToken.mint(recipient.address, airdropAmount).then((tx) => tx.wait());
+    };
+
+    await Promise.all(recipients.map((recipient) => mintAction(recipient)));
   }
 
   return { paymentToken };

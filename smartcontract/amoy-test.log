@@ -1,40 +1,133 @@
 TAP version 13
-# [dotenv@17.2.3] injecting env (35) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
-# [2025-11-13T12:04:48.908Z] INFO Loaded environment file {"envPath":"/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/.env"}
-# [2025-11-13T12:04:48.933Z] INFO Admin wallet configured {"address":"0x03a44e3a296B65Cc0Ff94B17E872f8CFb93ef5E4"}
-# [2025-11-13T12:04:48.937Z] INFO Starting fresh fixture deployment
-# [2025-11-13T12:04:48.955Z] WARN Skipping automatic MATIC funding for role wallets {"envVar":"TEST_ROLE_MATIC_FUND","value":"0"}
-# [2025-11-13T12:04:48.959Z] INFO Reusing existing Direction1155C deployment {"address":"0x4365f4dFEEB727a2C488470A804483463d504229"}
-# [2025-11-13T12:04:48.959Z] INFO Reusing existing payment token {"address":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C","faucet":false}
-# [2025-11-13T12:04:48.959Z] WARN Skipping payment token airdrop because ALLOW_FAUCET=false
-# [2025-11-13T12:04:49.504Z] INFO Payment token already configured {"paymentToken":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C"}
-# [2025-11-13T12:04:50.731Z] INFO Role already assigned {"role":"0x014df5ee2861d7f34562399ffa112fc59b51f810d2b875c3609ba0c31ac873d0","account":"0xFF303BC357fAb9E73C840eD0bD3107c89d6D1B5f","label":"notary"}
-# [2025-11-13T12:04:50.731Z] INFO Role already assigned {"role":"0x241ecf16d79d0f8dbfb92cbc07fe17840425976cf0667f022fe9877caa831b08","account":"0x766FF70BF672DA28380cFe7AFaF2168Fb8f7c544","label":"manager"}
-# [2025-11-13T12:04:51.226Z] INFO Address already KYC'd {"address":"0x03a44e3a296B65Cc0Ff94B17E872f8CFb93ef5E4","label":"admin"}
-# [2025-11-13T12:04:51.226Z] INFO Address already KYC'd {"address":"0xb933CCAe8Cef00d60b30A0652ad497FF78437542","label":"owner"}
-# [2025-11-13T12:04:54.203Z] INFO Starting fresh fixture deployment
-# [2025-11-13T12:04:54.223Z] WARN Skipping automatic MATIC funding for role wallets {"envVar":"TEST_ROLE_MATIC_FUND","value":"0"}
-# [2025-11-13T12:04:54.226Z] INFO Reusing existing Direction1155C deployment {"address":"0x4365f4dFEEB727a2C488470A804483463d504229"}
-# [2025-11-13T12:04:54.226Z] INFO Reusing existing payment token {"address":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C","faucet":false}
-# [2025-11-13T12:04:54.226Z] WARN Skipping payment token airdrop because ALLOW_FAUCET=false
+# [dotenv@17.2.3] injecting env (35) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+# [2025-11-13T12:22:58.193Z] INFO Loaded environment file {"envPath":"/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/.env"}
+# [2025-11-13T12:22:58.222Z] INFO Admin wallet configured {"address":"0x03a44e3a296B65Cc0Ff94B17E872f8CFb93ef5E4"}
+# [2025-11-13T12:22:58.226Z] INFO Starting fresh fixture deployment
+# [2025-11-13T12:22:58.242Z] WARN Skipping automatic MATIC funding for role wallets {"envVar":"TEST_ROLE_MATIC_FUND","value":"0"}
+# [2025-11-13T12:22:58.246Z] INFO Reusing existing Direction1155C deployment {"address":"0x4365f4dFEEB727a2C488470A804483463d504229"}
+# [2025-11-13T12:22:58.246Z] INFO Reusing existing payment token {"address":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C","faucet":false}
+# [2025-11-13T12:22:58.246Z] WARN Skipping payment token airdrop because ALLOW_FAUCET=false
+# [2025-11-13T12:22:58.827Z] INFO Payment token already configured {"paymentToken":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C"}
+# [2025-11-13T12:23:00.447Z] INFO Role already assigned {"role":"0x014df5ee2861d7f34562399ffa112fc59b51f810d2b875c3609ba0c31ac873d0","account":"0xFF303BC357fAb9E73C840eD0bD3107c89d6D1B5f","label":"notary"}
+# [2025-11-13T12:23:00.448Z] INFO Role already assigned {"role":"0x241ecf16d79d0f8dbfb92cbc07fe17840425976cf0667f022fe9877caa831b08","account":"0x766FF70BF672DA28380cFe7AFaF2168Fb8f7c544","label":"manager"}
+# [2025-11-13T12:23:00.855Z] INFO Address already KYC'd {"address":"0x03a44e3a296B65Cc0Ff94B17E872f8CFb93ef5E4","label":"admin"}
+# [2025-11-13T12:23:00.855Z] INFO Address already KYC'd {"address":"0xb933CCAe8Cef00d60b30A0652ad497FF78437542","label":"owner"}
+# [2025-11-13T12:23:00.855Z] INFO Address already KYC'd {"address":"0xFF303BC357fAb9E73C840eD0bD3107c89d6D1B5f","label":"notary"}
+# [2025-11-13T12:23:00.855Z] INFO Address already KYC'd {"address":"0x766FF70BF672DA28380cFe7AFaF2168Fb8f7c544","label":"manager"}
+# [2025-11-13T12:23:00.856Z] INFO Address already KYC'd {"address":"0xbfcC8010B088645be3daF5B21c0F62FDd2e154d0","label":"investor"}
+# [2025-11-13T12:23:00.856Z] INFO Fixture ready {"contract":"0x4365f4dFEEB727a2C488470A804483463d504229","paymentToken":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C"}
+# [2025-11-13T12:23:02.699Z] INFO requestMint initiated {"owner":"0xb933CCAe8Cef00d60b30A0652ad497FF78437542","tokenId":1001,"amount":50}
+# [2025-11-13T12:23:37.065Z] INFO Mint flow completed {"requestId":"2","tokenId":1001,"amount":50}
+# [2025-11-13T12:23:54.585Z] INFO Starting fresh fixture deployment
+# [2025-11-13T12:23:54.609Z] WARN Skipping automatic MATIC funding for role wallets {"envVar":"TEST_ROLE_MATIC_FUND","value":"0"}
+# [2025-11-13T12:23:54.613Z] INFO Reusing existing Direction1155C deployment {"address":"0x4365f4dFEEB727a2C488470A804483463d504229"}
+# [2025-11-13T12:23:54.614Z] INFO Reusing existing payment token {"address":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C","faucet":false}
+# [2025-11-13T12:23:54.614Z] WARN Skipping payment token airdrop because ALLOW_FAUCET=false
 # Subtest: Direction1155C (backend/tests)
     # Subtest: mints after dual approvals and enforces off-chain KYC rules
-    not ok 1 - mints after dual approvals and enforces off-chain KYC rules
+    ok 1 - mints after dual approvals and enforces off-chain KYC rules
       ---
-      duration_ms: 5265.598333
-      location: '/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/test/amoy/direction1155c.flow.test.cjs:353:3'
-      failureType: 'hookFailed'
-      error: 'replacement fee too low (transaction="0x02f8b483013882458509502f90008509502f907e82bd7a944365f4dfeeb727a2c488470a804483463d50422980b8447807aeba000000000000000000000000766ff70bf672da28380cfe7afaf2168fb8f7c5440000000000000000000000000000000000000000000000000000000000000001c080a012b6c2e38a81db88de3c150f0aeb5abae298840a1e37a09da431e73953405afba067cf838cf6dfe109641a45c9365cbd04771a08ae4ffe7f7c68d4cad9665ad84e", info={ "error": { "code": -32000, "message": "replacement transaction underpriced" } }, code=REPLACEMENT_UNDERPRICED, version=6.15.0)'
-      code: 'REPLACEMENT_UNDERPRICED'
+      duration_ms: 56360.665083
+      ...
+# [2025-11-13T12:23:55.092Z] INFO Payment token already configured {"paymentToken":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C"}
+# [2025-11-13T12:23:56.386Z] INFO Role already assigned {"role":"0x014df5ee2861d7f34562399ffa112fc59b51f810d2b875c3609ba0c31ac873d0","account":"0xFF303BC357fAb9E73C840eD0bD3107c89d6D1B5f","label":"notary"}
+# [2025-11-13T12:23:56.386Z] INFO Role already assigned {"role":"0x241ecf16d79d0f8dbfb92cbc07fe17840425976cf0667f022fe9877caa831b08","account":"0x766FF70BF672DA28380cFe7AFaF2168Fb8f7c544","label":"manager"}
+# [2025-11-13T12:23:56.768Z] INFO Address already KYC'd {"address":"0x03a44e3a296B65Cc0Ff94B17E872f8CFb93ef5E4","label":"admin"}
+# [2025-11-13T12:23:56.768Z] INFO Address already KYC'd {"address":"0xb933CCAe8Cef00d60b30A0652ad497FF78437542","label":"owner"}
+# [2025-11-13T12:23:56.768Z] INFO Address already KYC'd {"address":"0xFF303BC357fAb9E73C840eD0bD3107c89d6D1B5f","label":"notary"}
+# [2025-11-13T12:23:56.768Z] INFO Address already KYC'd {"address":"0x766FF70BF672DA28380cFe7AFaF2168Fb8f7c544","label":"manager"}
+# [2025-11-13T12:23:56.768Z] INFO Address already KYC'd {"address":"0xbfcC8010B088645be3daF5B21c0F62FDd2e154d0","label":"investor"}
+# [2025-11-13T12:23:56.769Z] INFO Fixture ready {"contract":"0x4365f4dFEEB727a2C488470A804483463d504229","paymentToken":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C"}
+# [2025-11-13T12:24:28.256Z] INFO Starting fresh fixture deployment
+# [2025-11-13T12:24:28.279Z] WARN Skipping automatic MATIC funding for role wallets {"envVar":"TEST_ROLE_MATIC_FUND","value":"0"}
+# [2025-11-13T12:24:28.283Z] INFO Reusing existing Direction1155C deployment {"address":"0x4365f4dFEEB727a2C488470A804483463d504229"}
+# [2025-11-13T12:24:28.284Z] INFO Reusing existing payment token {"address":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C","faucet":false}
+# [2025-11-13T12:24:28.284Z] WARN Skipping payment token airdrop because ALLOW_FAUCET=false
+    # Subtest: reverts executeMint when approvals are missing
+    ok 2 - reverts executeMint when approvals are missing
+      ---
+      duration_ms: 33671.958583
+      ...
+# [2025-11-13T12:24:28.759Z] INFO Payment token already configured {"paymentToken":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C"}
+# [2025-11-13T12:24:29.988Z] INFO Role already assigned {"role":"0x014df5ee2861d7f34562399ffa112fc59b51f810d2b875c3609ba0c31ac873d0","account":"0xFF303BC357fAb9E73C840eD0bD3107c89d6D1B5f","label":"notary"}
+# [2025-11-13T12:24:29.988Z] INFO Role already assigned {"role":"0x241ecf16d79d0f8dbfb92cbc07fe17840425976cf0667f022fe9877caa831b08","account":"0x766FF70BF672DA28380cFe7AFaF2168Fb8f7c544","label":"manager"}
+# [2025-11-13T12:24:30.483Z] INFO Address already KYC'd {"address":"0x03a44e3a296B65Cc0Ff94B17E872f8CFb93ef5E4","label":"admin"}
+# [2025-11-13T12:24:30.483Z] INFO Address already KYC'd {"address":"0xb933CCAe8Cef00d60b30A0652ad497FF78437542","label":"owner"}
+# [2025-11-13T12:24:30.483Z] INFO Address already KYC'd {"address":"0xFF303BC357fAb9E73C840eD0bD3107c89d6D1B5f","label":"notary"}
+# [2025-11-13T12:24:30.483Z] INFO Address already KYC'd {"address":"0x766FF70BF672DA28380cFe7AFaF2168Fb8f7c544","label":"manager"}
+# [2025-11-13T12:24:30.483Z] INFO Address already KYC'd {"address":"0xbfcC8010B088645be3daF5B21c0F62FDd2e154d0","label":"investor"}
+# [2025-11-13T12:24:30.483Z] INFO Fixture ready {"contract":"0x4365f4dFEEB727a2C488470A804483463d504229","paymentToken":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C"}
+# [2025-11-13T12:24:31.482Z] INFO Starting fresh fixture deployment
+# [2025-11-13T12:24:31.504Z] WARN Skipping automatic MATIC funding for role wallets {"envVar":"TEST_ROLE_MATIC_FUND","value":"0"}
+# [2025-11-13T12:24:31.506Z] INFO Reusing existing Direction1155C deployment {"address":"0x4365f4dFEEB727a2C488470A804483463d504229"}
+# [2025-11-13T12:24:31.507Z] INFO Reusing existing payment token {"address":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C","faucet":false}
+# [2025-11-13T12:24:31.507Z] WARN Skipping payment token airdrop because ALLOW_FAUCET=false
+    # Subtest: restricts document and URI setters to their roles
+    not ok 3 - restricts document and URI setters to their roles
+      ---
+      duration_ms: 3223.15775
+      location: '/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/test/amoy/direction1155c.flow.test.cjs:490:3'
+      failureType: 'testCodeFailure'
+      error: 'Expected error to include "AccessControl" but got "execution reverted (unknown custom error)"'
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: '=='
+      stack: |-
+        expectRevert (/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/test/amoy/direction1155c.flow.test.cjs:385:12)
+        process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+        async TestContext.<anonymous> (/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/test/amoy/direction1155c.flow.test.cjs:493:5)
+        async Test.run (node:internal/test_runner/test:797:9)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:526:7)
+      ...
+    # Subtest: airdrops the configured mock USDT amount to every participant
+    ok 4 - airdrops the configured mock USDT amount to every participant # SKIP
+      ---
+      duration_ms: 2.504958
+      ...
+# [2025-11-13T12:24:31.887Z] INFO Payment token already configured {"paymentToken":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C"}
+# [2025-11-13T12:24:33.028Z] INFO Role already assigned {"role":"0x014df5ee2861d7f34562399ffa112fc59b51f810d2b875c3609ba0c31ac873d0","account":"0xFF303BC357fAb9E73C840eD0bD3107c89d6D1B5f","label":"notary"}
+# [2025-11-13T12:24:33.029Z] INFO Role already assigned {"role":"0x241ecf16d79d0f8dbfb92cbc07fe17840425976cf0667f022fe9877caa831b08","account":"0x766FF70BF672DA28380cFe7AFaF2168Fb8f7c544","label":"manager"}
+# [2025-11-13T12:24:33.498Z] INFO Address already KYC'd {"address":"0x03a44e3a296B65Cc0Ff94B17E872f8CFb93ef5E4","label":"admin"}
+# [2025-11-13T12:24:33.499Z] INFO Address already KYC'd {"address":"0xb933CCAe8Cef00d60b30A0652ad497FF78437542","label":"owner"}
+# [2025-11-13T12:24:33.499Z] INFO Address already KYC'd {"address":"0xFF303BC357fAb9E73C840eD0bD3107c89d6D1B5f","label":"notary"}
+# [2025-11-13T12:24:33.499Z] INFO Address already KYC'd {"address":"0x766FF70BF672DA28380cFe7AFaF2168Fb8f7c544","label":"manager"}
+# [2025-11-13T12:24:33.499Z] INFO Address already KYC'd {"address":"0xbfcC8010B088645be3daF5B21c0F62FDd2e154d0","label":"investor"}
+# [2025-11-13T12:24:33.499Z] INFO Fixture ready {"contract":"0x4365f4dFEEB727a2C488470A804483463d504229","paymentToken":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C"}
+# [2025-11-13T12:25:07.653Z] INFO Property minted for marketplace test {"tokenId":6001,"amount":10}
+    # Subtest: lists tokens at the configured price and distributes interest proportionally
+    not ok 5 - lists tokens at the configured price and distributes interest proportionally
+      ---
+      duration_ms: 45904.181709
+      location: '/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/test/amoy/direction1155c.flow.test.cjs:541:3'
+      failureType: 'testCodeFailure'
+      error: 'missing revert data (action="estimateGas", data=null, reason=null, transaction={ "data": "0xb03053b600000000000000000000000000000000000000000000000000000000000017710000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000002386f26fc10000", "from": "0xb933CCAe8Cef00d60b30A0652ad497FF78437542", "to": "0x4365f4dFEEB727a2C488470A804483463d504229" }, invocation=null, revert=null, code=CALL_EXCEPTION, version=6.15.0)'
+      code: 'CALL_EXCEPTION'
       stack: |-
         makeError (/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/node_modules/ethers/lib.commonjs/utils/errors.js:137:21)
-        JsonRpcProvider.getRpcError (/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/node_modules/ethers/lib.commonjs/providers/provider-jsonrpc.js:730:49)
+        getBuiltinCallException (/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/node_modules/ethers/lib.commonjs/abi/abi-coder.js:105:37)
+        AbiCoder.getBuiltinCallException (/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/node_modules/ethers/lib.commonjs/abi/abi-coder.js:206:16)
+        JsonRpcProvider.getRpcError (/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/node_modules/ethers/lib.commonjs/providers/provider-jsonrpc.js:695:43)
         /Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/node_modules/ethers/lib.commonjs/providers/provider-jsonrpc.js:302:45
         process.processTicksAndRejections (node:internal/process/task_queues:95:5)
       ...
-# [2025-11-13T12:04:54.700Z] INFO Payment token already configured {"paymentToken":"0xe68cEAF9850B1562B5E38b183A74020b5C5fb18C"}
-# [2025-11-13T12:04:55.838Z] INFO Role already assigned {"role":"0x014df5ee2861d7f34562399ffa112fc59b51f810d2b875c3609ba0c31ac873d0","account":"0xFF303BC357fAb9E73C840eD0bD3107c89d6D1B5f","label":"notary"}
-# [2025-11-13T12:04:55.838Z] INFO Role already assigned {"role":"0x241ecf16d79d0f8dbfb92cbc07fe17840425976cf0667f022fe9877caa831b08","account":"0x766FF70BF672DA28380cFe7AFaF2168Fb8f7c544","label":"manager"}
-# [2025-11-13T12:04:56.233Z] INFO Address already KYC'd {"address":"0x03a44e3a296B65Cc0Ff94B17E872f8CFb93ef5E4","label":"admin"}
-# [2025-11-13T12:04:56.234Z] INFO Address already KYC'd {"address":"0xb933CCAe8Cef00d60b30A0652ad497FF78437542","label":"owner"}
-# [2025-11-13T12:04:56.234Z] INFO Address already KYC'd {"address":"0xFF303BC357fAb9E73C840eD0bD3107c89d6D1B5f","label":"notary"}
+    1..5
+not ok 1 - Direction1155C (backend/tests)
+  ---
+  duration_ms: 139166.49025
+  type: 'suite'
+  location: '/Users/samuelsurya/androidCode/web3/ERC1155C/smartcontract/test/amoy/direction1155c.flow.test.cjs:392:1'
+  failureType: 'subtestsFailed'
+  error: '2 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 5
+# suites 1
+# pass 2
+# fail 2
+# cancelled 0
+# skipped 1
+# todo 0
+# duration_ms 139367.579542

@@ -171,6 +171,8 @@ Run a lightweight Node.js test (no Hardhat test runner) directly against Polygon
    - Advanced: set `DIRECTION1155C_TEST_ENV=/absolute/path/to/.env` if you want to load a custom env file elsewhere.
    - Already deployed contracts? set `TEST_EXISTING_CONTRACT_ADDRESS` (or `DIRE1155C_ADDRESS`) plus `TEST_PAYMENT_TOKEN_ADDRESS`/`MOCK_USDT_ADDRESS` so the runner attaches to those deployments instead of redeploying every test. The script still mints new tokens and may update roles/KYC, so point it to a staging deployment.
    - Set `ALLOW_FAUCET=false` only when your payment token already exists and holders are funded; the runner will skip minting/airdrops (and the faucet test) and will require `TEST_PAYMENT_TOKEN_ADDRESS` to be set.
+   - To avoid `REPLACEMENT_UNDERPRICED` errors on Polygon, tweak `TEST_FEE_BUMP_PERCENT` (default 20%) and `TEST_FEE_RETRIES` (default 3) so each transaction automatically bumps its max fee when the RPC reports an underpriced replacement.
+   - Already have minted tokens on that contract? leave `FORCE_MINT=false` so the expensive mint test is skipped; set it to `true` if you want to force a fresh `requestMint → approve → execute` flow.
 2. Ensure artifacts exist (`cd smartcontract && npx hardhat compile`).
 3. Execute `cd smartcontract && node --test test/amoy/direction1155c.flow.test.cjs`.
 

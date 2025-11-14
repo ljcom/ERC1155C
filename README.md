@@ -1,4 +1,4 @@
-# Direction1155C (Polygon Amoy)
+# Direction1155C (was ERC1155C) (Polygon Amoy)
 
 Modular ERC‑1155 contract with dual-approval minting, KYC enforcement, ERC20-settled marketplace, and interest distribution—built for Polygon Amoy testing and future mainnet deployment.
 
